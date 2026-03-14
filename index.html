@@ -176,6 +176,8 @@
       GitHub
     </a>
     <span class="bottom-link-sep">·</span>
+    <button id="help-btn" class="bottom-link">Help</button>
+    <span class="bottom-link-sep">·</span>
     <button id="about-btn" class="bottom-link">About</button>
   </div>
 
@@ -286,6 +288,95 @@
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
       Close
+    </div>
+  </div>
+
+  <div id="help-modal" class="modal-overlay">
+    <div class="modal help-modal">
+      <div class="modal-header">
+        <h2>Help</h2>
+        <button id="close-help-btn" class="close-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="help-body">
+        <div class="help-section">
+          <h3>Writing</h3>
+          <ul>
+            <li>Click anywhere in the editor and start typing — your work is saved automatically after a short pause.</li>
+            <li>The save indicator (top-right checkmark) confirms everything is stored.</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3>Tabs</h3>
+          <ul>
+            <li><strong>New tab</strong> — click the <strong>+</strong> button in the sidebar.</li>
+            <li><strong>Switch</strong> — click any tab name.</li>
+            <li><strong>Rename</strong> — double-click a tab name, type, then press Enter.</li>
+            <li><strong>Close</strong> — click the × on a tab (requires confirmation). You need at least two tabs for × to appear.</li>
+            <li><strong>Duplicate / Close</strong> — right-click a tab to open the context menu.</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3>Undo</h3>
+          <ul>
+            <li>Press <kbd>Ctrl+Z</kbd> (or <kbd>Cmd+Z</kbd> on Mac) or click the undo button in the toolbar.</li>
+            <li>Each tab has its own undo history (up to 50 states). History resets when you reload the page.</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3>Find &amp; Replace</h3>
+          <ul>
+            <li>First enable it in <strong>Settings → Features → Enable Find &amp; Replace</strong>.</li>
+            <li>Once enabled, open it with the search button or <kbd>Ctrl+F</kbd>.</li>
+            <li>Use <strong>Prev / Next</strong> (or <kbd>Enter</kbd> / <kbd>Shift+Enter</kbd>) to navigate matches.</li>
+            <li><strong>Replace</strong> replaces the current match; <strong>All</strong> replaces every occurrence at once.</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3>Markdown Preview</h3>
+          <ul>
+            <li>Click the eye button in the toolbar to render the current tab as formatted Markdown.</li>
+            <li>Requires an internet connection on first load so the Markdown library can be cached.</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3>Copy &amp; Clear</h3>
+          <ul>
+            <li><strong>Copy</strong> (clipboard button) — copies all text in the active tab to your clipboard.</li>
+            <li><strong>Clear</strong> (trash button) — erases all text in the active tab after confirmation.</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3>Settings</h3>
+          <ul>
+            <li>Click the gear icon to open Settings.</li>
+            <li>Choose between <strong>Dark</strong>, <strong>Ultra Dark</strong>, and <strong>Light</strong> themes.</li>
+            <li>Pick an accent color to personalize the interface.</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3>Keyboard Shortcuts</h3>
+          <div class="help-shortcuts">
+            <div class="help-shortcut-row"><kbd>Ctrl+Z</kbd><span>Undo</span></div>
+            <div class="help-shortcut-row"><kbd>Ctrl+F</kbd><span>Open Find &amp; Replace (when enabled)</span></div>
+            <div class="help-shortcut-row"><kbd>Enter</kbd><span>Next match (in Find input)</span></div>
+            <div class="help-shortcut-row"><kbd>Shift+Enter</kbd><span>Previous match (in Find input)</span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

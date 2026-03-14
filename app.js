@@ -654,6 +654,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Help modal open/close
+  const helpBtn = document.getElementById('help-btn');
+  const helpModal = document.getElementById('help-modal');
+  const closeHelpBtn = document.getElementById('close-help-btn');
+
+  helpBtn.addEventListener('click', () => {
+    helpModal.classList.add('show');
+  });
+
+  closeHelpBtn.addEventListener('click', () => {
+    helpModal.classList.remove('show');
+  });
+
+  helpModal.addEventListener('click', (e) => {
+    if (e.target === helpModal) {
+      helpModal.classList.remove('show');
+    }
+  });
+
   const findReplaceCb = document.getElementById('find-replace-toggle');
   if (findReplaceCb) {
     findReplaceCb.addEventListener('change', () => {
