@@ -6,6 +6,10 @@ A fast, beautiful, fully offline text editor that runs entirely in your browser.
 
 ---
 
+![Writelo screenshot](assets/screenshot.png)
+
+---
+
 ## Getting Started
 
 Download the files and open `index.html` in any modern browser. That's it.
