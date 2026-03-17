@@ -46,6 +46,26 @@ Open Settings (gear icon) to choose:
 
 The header logo, title gradient, and subtitle all update to match the chosen accent color.
 
+### Export & Import
+Back up and restore your notes from the **Settings → Data** section.
+
+- **Export** — downloads a `writelo-backup-YYYY-MM-DD.json` file containing all your tabs
+- **Import** — opens a file picker; after confirmation, replaces all current tabs with the backup's content
+- **Include app settings** toggle — when checked, the export file also contains your theme, accent color, and feature flags, and import will restore them too
+
+Exported JSON format:
+```json
+{
+  "version": 1,
+  "exportedAt": "ISO timestamp",
+  "tabs": [{ "id", "name", "content" }],
+  "activeTabId": "...",
+  "settings": { "theme", "accentColor", "findAndReplace" }
+}
+```
+
+> **Note:** Importing replaces all current notes. There is a confirmation prompt before anything is overwritten.
+
 ### Multiple Browser Tabs
 If you open Writelo in more than one browser tab, they stay in sync automatically via the BroadcastChannel API. A "Live Sync" indicator appears in the header whenever multiple tabs are active.
 

@@ -855,5 +855,96 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Export / Import Logic
+  const exportBtn = document.getElementById('export-btn');
+  const importBtn = document.getElementById('import-btn');
+  const importFileInput = document.getElementById('import-file-input');
+  const includeSettingsToggle = document.getElementById('include-settings-toggle');
+
+  if (exportBtn) {
+    exportBtn.addEventListener('click', () => {
+      // Make sure the active tab's latest content is captured before export
+      const activeTab = tabs.find(t => t.id === activeTabId);
+      if (activeTab) activeTab.content = textarea.value;
+
+      const exportObj = {
+        version: 1,
+        exportedAt: new Date().toISOString(),
+        tabs: tabs,
+        activeTabId: activeTabId
+      };
+
+      if (includeSettingsToggle && includeSettingsToggle.checked) {
+        exportObj.settings = currentSettings;
+      }
+
+      const json = JSON.stringify(exportObj, null, 2);
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `writelo-backup-${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast(`Exported ${tabs.length} tab(s)!`, true);
+    });
+  }
+
+  if (importBtn) {
+    importBtn.addEventListener('click', () => {
+      if (importFileInput) importFileInput.click();
+    });
+  }
+
+  if (importFileInput) {
+    importFileInput.addEventListener('change', () => {
+      const file = importFileInput.files[0];
+      if (!file) return;
+      // Reset so the same file can be re-imported if needed
+      importFileInput.value = '';
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const data = JSON.parse(e.target.result);
+          if (!data.tabs || !Array.isArray(data.tabs) || data.tabs.length === 0) {
+            showToast('Invalid backup file', false);
+            return;
+          }
+
+          if (!confirm(`Replace all current notes with ${data.tabs.length} tab(s) from the backup? This cannot be undone.`)) return;
+
+          tabs = data.tabs;
+          activeTabId = data.activeTabId && data.tabs.find(t => t.id === data.activeTabId)
+            ? data.activeTabId
+            : data.tabs[0].id;
+
+          if (includeSettingsToggle && includeSettingsToggle.checked && data.settings) {
+            currentSettings = { ...currentSettings, ...data.settings };
+            saveSettings();
+            applySettings();
+          }
+
+          // Clear undo histories from previous session
+          tabHistories.clear();
+
+          saveTabsData();
+
+          const targetId = activeTabId;
+          activeTabId = null;
+          switchTab(targetId);
+
+          settingsModal.classList.remove('show');
+          showToast(`Imported ${tabs.length} tab(s) successfully!`, true);
+        } catch {
+          showToast('Failed to read backup file', false);
+        }
+      };
+      reader.readAsText(file);
+    });
+  }
+
   loadSettings();
 });

@@ -242,6 +242,34 @@
           <span>Enable Find &amp; Replace (Experimental)</span>
         </label>
       </div>
+
+      <div class="setting-group setting-group--last">
+        <h3>Data Export &amp; Import</h3>
+        <label class="feature-toggle" title="Include theme, accent color, and feature settings in the export file">
+          <input type="checkbox" id="include-settings-toggle" checked>
+          <div class="toggle-switch"></div>
+          <span>Include app settings</span>
+        </label>
+        <div class="data-io-buttons">
+          <button id="export-btn" class="data-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Export
+          </button>
+          <button id="import-btn" class="data-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            Import
+          </button>
+          <input type="file" id="import-file-input" accept=".json" style="display:none">
+        </div>
+      </div>
     </div>
   </div>
 
@@ -364,6 +392,16 @@
             <li>Click the gear icon to open Settings.</li>
             <li>Choose between <strong>Dark</strong>, <strong>Ultra Dark</strong>, and <strong>Light</strong> themes.</li>
             <li>Pick an accent color to personalize the interface.</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3>Export &amp; Import</h3>
+          <ul>
+            <li>Open <strong>Settings</strong> and scroll to the <strong>Data</strong> section at the bottom.</li>
+            <li><strong>Export</strong> — downloads a <code>.json</code> backup of all your tabs to your device.</li>
+            <li><strong>Import</strong> — loads a backup file and replaces your current notes with its contents (a confirmation is shown first).</li>
+            <li>Check <strong>Include app settings</strong> to also save and restore your theme, accent color, and feature preferences.</li>
           </ul>
         </div>
 
