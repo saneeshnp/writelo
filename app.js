@@ -521,7 +521,8 @@ document.addEventListener('DOMContentLoaded', () => {
     { name: 'Green',  value: '#10b981', gradient: 'linear-gradient(135deg, #34d399 0%, #818cf8 100%)', svgStart: '#34d399', svgEnd: '#818cf8' },
     { name: 'Rose',   value: '#f43f5e', gradient: 'linear-gradient(135deg, #fb7185 0%, #818cf8 100%)', svgStart: '#fb7185', svgEnd: '#818cf8' },
     { name: 'Amber',  value: '#f59e0b', gradient: 'linear-gradient(135deg, #fcd34d 0%, #818cf8 100%)', svgStart: '#fcd34d', svgEnd: '#818cf8' },
-    { name: 'Teal',   value: '#14b8a6', gradient: 'linear-gradient(135deg, #4CAF50 0%, #818cf8 100%)', svgStart: '#4CAF50', svgEnd: '#818cf8' }
+    { name: 'Teal',   value: '#14b8a6', gradient: 'linear-gradient(135deg, #4CAF50 0%, #818cf8 100%)', svgStart: '#4CAF50', svgEnd: '#818cf8' },
+    { name: 'Grey',   value: '#9ca3af', gradient: 'linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%)', svgStart: '#ffffff', svgEnd: '#cbd5e1' }
   ];
 
   let currentSettings = {
@@ -567,6 +568,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeColor = COLORS.find(c => c.value === currentSettings.accentColor);
     if (activeColor) {
       document.documentElement.style.setProperty('--brand-gradient', activeColor.gradient);
+      document.documentElement.setAttribute('data-accent', activeColor.name.toLowerCase());
       document.querySelectorAll('#gradient stop, #about-gradient stop').forEach((stop, i) => {
         stop.setAttribute('stop-color', i % 2 === 0 ? activeColor.svgStart : activeColor.svgEnd);
       });

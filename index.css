@@ -802,13 +802,25 @@ textarea::placeholder {
 }
 
 .setting-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.setting-group:first-of-type {
+    padding-top: 0;
+}
+
+.setting-group--last {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .setting-group h3 {
     font-size: 0.85rem;
     font-weight: 600;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -1405,9 +1417,6 @@ kbd {
 }
 
 /* Data Export / Import */
-.setting-group--last {
-    margin-bottom: 0;
-}
 
 .data-io-buttons {
     display: flex;
@@ -1448,4 +1457,21 @@ kbd {
     background: var(--accent-color);
     border-color: var(--accent-color);
     color: #fff;
+}
+
+/* Grey accent — boost brightness throughout */
+[data-accent="grey"] .app-subtitle,
+[data-accent="grey"] .about-tagline {
+    color: #e2e8f0;
+    opacity: 1;
+}
+
+[data-accent="grey"] .tab-item.active {
+    background: rgba(203, 213, 225, 0.22);
+    color: #ffffff;
+    box-shadow: inset 3px 0 0 #e2e8f0;
+}
+
+[data-accent="grey"] .tab-item.active .close-tab-btn {
+    color: #e2e8f0;
 }
