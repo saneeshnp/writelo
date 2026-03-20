@@ -418,6 +418,85 @@
     </div>
   </div>
 
+  <div id="welcome-modal" class="modal-overlay">
+    <div class="modal welcome-modal">
+      <div class="welcome-header">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#welcome-gradient)" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <defs>
+            <linearGradient id="welcome-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#4CAF50" />
+              <stop offset="100%" stop-color="#818cf8" />
+            </linearGradient>
+          </defs>
+          <path d="M12 20h9"></path>
+          <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+        </svg>
+        <div>
+          <h2 class="welcome-title">Welcome to Writelo</h2>
+          <p class="welcome-subtitle">Here's what you can do</p>
+        </div>
+      </div>
+
+      <div class="welcome-features">
+        <div class="welcome-feature">
+          <div class="welcome-feature-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+              <polyline points="17 21 17 13 7 13 7 21"></polyline>
+            </svg>
+          </div>
+          <div>
+            <p class="welcome-feature-title">Auto-saves as you type</p>
+            <p class="welcome-feature-desc">Everything is saved to your browser's local storage — no account or internet needed.</p>
+          </div>
+        </div>
+
+        <div class="welcome-feature">
+          <div class="welcome-feature-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <div>
+            <p class="welcome-feature-title">Live sync across browser tabs</p>
+            <p class="welcome-feature-desc">Open Writelo in multiple tabs — your notes stay in sync automatically across all of them.</p>
+          </div>
+        </div>
+
+        <div class="welcome-feature">
+          <div class="welcome-feature-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+          </div>
+          <div>
+            <p class="welcome-feature-title">Multiple tabs, one place</p>
+            <p class="welcome-feature-desc">Create as many named tabs as you need. Each one keeps its own undo history.</p>
+          </div>
+        </div>
+
+        <div class="welcome-feature">
+          <div class="welcome-feature-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <div>
+            <p class="welcome-feature-title">Find &amp; Replace, Markdown preview</p>
+            <p class="welcome-feature-desc">Enable Find &amp; Replace in Settings. Preview your Markdown as formatted HTML anytime.</p>
+          </div>
+        </div>
+      </div>
+
+      <button id="close-welcome-btn" class="welcome-cta">Start writing</button>
+    </div>
+  </div>
+
   <div id="about-modal" class="modal-overlay">
     <div class="modal about-modal">
       <div class="modal-header">

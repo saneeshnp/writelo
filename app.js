@@ -949,4 +949,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   loadSettings();
+
+  // 6. First-Visit Welcome Modal
+  const WELCOME_KEY = 'jotdown_welcomed';
+  const welcomeModal = document.getElementById('welcome-modal');
+  const closeWelcomeBtn = document.getElementById('close-welcome-btn');
+
+  function closeWelcome() {
+    welcomeModal.classList.remove('show');
+  }
+
+  closeWelcomeBtn.addEventListener('click', closeWelcome);
+  welcomeModal.addEventListener('click', (e) => {
+    if (e.target === welcomeModal) closeWelcome();
+  });
+
+  if (!localStorage.getItem(WELCOME_KEY)) {
+    localStorage.setItem(WELCOME_KEY, '1');
+    setTimeout(() => welcomeModal.classList.add('show'), 400);
+  }
 });
