@@ -1228,6 +1228,14 @@ textarea::placeholder {
     margin-top: 2px;
 }
 
+.about-version {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    opacity: 0.6;
+    margin-top: 3px;
+}
+
 .about-description {
     font-size: 0.875rem;
     color: var(--text-muted);
