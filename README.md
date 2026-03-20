@@ -2,6 +2,8 @@
 
 A fast, beautiful, fully offline text editor that runs entirely in your browser. No account, no server, no installation — just open the file and start writing. Auto-syncs across all browser tabs.
 
+**Live Demo:** https://saneeshnp.github.io/writelo/
+
 **GitHub:** https://github.com/saneeshnp/writelo
 
 ---
