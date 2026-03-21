@@ -948,6 +948,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Sidebar collapse logic
+  const SIDEBAR_KEY = 'jotdown_sidebar_collapsed';
+  const tabsBar = document.getElementById('tabs-bar');
+  const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
+
+  const chevronLeft = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg><span class="sidebar-toggle-label">Hide</span>`;
+  const chevronRight = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>`;
+
+  function setSidebarCollapsed(collapsed, save = true) {
+    if (collapsed) {
+      tabsBar.classList.add('collapsed');
+      sidebarToggleBtn.innerHTML = chevronRight;
+      sidebarToggleBtn.title = 'Expand sidebar';
+    } else {
+      tabsBar.classList.remove('collapsed');
+      sidebarToggleBtn.innerHTML = chevronLeft;
+      sidebarToggleBtn.title = 'Collapse sidebar';
+    }
+    if (save) {
+      localStorage.setItem(SIDEBAR_KEY, String(collapsed));
+    }
+  }
+
+  function initSidebar() {
+    const saved = localStorage.getItem(SIDEBAR_KEY);
+    const isMobile = window.matchMedia('(max-width: 640px)').matches;
+    const collapsed = saved !== null ? saved === 'true' : isMobile;
+    setSidebarCollapsed(collapsed, false);
+  }
+
+  sidebarToggleBtn.addEventListener('click', () => {
+    setSidebarCollapsed(!tabsBar.classList.contains('collapsed'));
+  });
+
+  initSidebar();
+
   loadSettings();
 
   // 6. First-Visit Welcome Modal
