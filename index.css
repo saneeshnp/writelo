@@ -229,6 +229,16 @@ header {
     align-items: center;
 }
 
+/* Desktop: overflow wrapper is transparent — children join the flex row */
+.actions-overflow {
+    display: contents;
+}
+
+/* Desktop: toggle button is hidden */
+.actions-toggle-btn {
+    display: none;
+}
+
 .app-bottom-links {
     display: flex;
     align-items: center;
@@ -392,6 +402,7 @@ button:active {
     width: 32px;
     padding: 0.5rem 0;
     align-items: center;
+    gap: 0.4rem;
 }
 
 .tabs-bar.collapsed .tabs-list,
@@ -772,26 +783,116 @@ textarea::placeholder {
     opacity: 1;
 }
 
+/* Overflow panel slide-in animation */
+@keyframes mobileOverflowIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 /* Responsive adjustments */
 @media (max-width: 640px) {
-    header {
-        flex-wrap: wrap;
-        gap: 1rem;
-        justify-content: center;
-    }
-
-    .status-indicator {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-    }
-
     body {
         padding: 1rem;
     }
 
     .app-container {
         height: calc(100vh - 2rem);
+    }
+
+    /* Header: single flex row, never wraps, anchors the dropdown */
+    header {
+        position: relative;
+        z-index: 10;
+        padding: 0.75rem 1rem;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .brand {
+        flex: 1;
+        min-width: 0;
+    }
+
+    /* Shrink long brand subtitle on very small screens */
+    .app-subtitle {
+        display: none;
+    }
+
+    /* Actions: single unwrapped row — sync indicator can appear without breaking layout */
+    .actions {
+        gap: 0.4rem;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        align-items: center;
+    }
+
+    .actions button {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Compact sync indicator: icon only, no label */
+    .sync-indicator {
+        padding: 0.35rem;
+        border-radius: 50%;
+        gap: 0;
+    }
+
+    .sync-indicator .sync-text {
+        display: none;
+    }
+
+    /* Show the ⋯ toggle */
+    .actions-toggle-btn {
+        display: flex;
+    }
+
+    /* Active tint on the toggle when panel is open */
+    .header-actions-expanded .actions-toggle-btn {
+        background: rgba(255, 255, 255, 0.12);
+        color: var(--text-main);
+    }
+
+    [data-theme="light"] .header-actions-expanded .actions-toggle-btn {
+        background: rgba(0, 0, 0, 0.08);
+    }
+
+    /* Overflow panel: absolute card that drops below the header */
+    .actions-overflow {
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 0;
+        right: 0;
+        z-index: 500;
+        display: none;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        padding: 0.75rem 1rem;
+        background: var(--glass-bg);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-actions-expanded .actions-overflow {
+        display: flex;
+        animation: mobileOverflowIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Give overflow buttons a bit more breathing room */
+    .actions-overflow button {
+        width: 42px;
+        height: 42px;
     }
 }
 

@@ -948,6 +948,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Mobile header actions overflow toggle
+  const headerActions = document.getElementById('header-actions');
+  const actionsToggleBtn = document.getElementById('actions-toggle-btn');
+
+  if (actionsToggleBtn) {
+    actionsToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      headerActions.classList.toggle('header-actions-expanded');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!headerActions.contains(e.target)) {
+        headerActions.classList.remove('header-actions-expanded');
+      }
+    });
+  }
+
   // Sidebar collapse logic
   const SIDEBAR_KEY = 'jotdown_sidebar_collapsed';
   const tabsBar = document.getElementById('tabs-bar');

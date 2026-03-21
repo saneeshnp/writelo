@@ -2,6 +2,17 @@
 
 All notable changes to Writelo will be documented in this file.
 
+## [1.1.0] - 2026-03-21
+
+### Improvements
+
+- **Collapsible sidebar** — The tab sidebar can now be collapsed to a slim 32px strip to give more writing space. Preference is saved to `localStorage` and restored on reload. Defaults to collapsed on mobile and expanded on desktop.
+- **Sidebar toggle button** — A chevron toggle sits at the top of the sidebar. When expanded, a "Hide" label accompanies the icon. The Add Tab (+) button remains visible in the collapsed strip on all screen sizes.
+- **Mobile header overflow menu** — On mobile, secondary actions (Settings, Undo, Preview, Find & Replace, Clear) are tucked behind a ⋯ button to prevent cramping. Copy and the save indicator are always visible. The overflow panel drops as an animated card below the header and closes on outside tap.
+- **Mobile header layout fix** — The header is now a single non-wrapping row on mobile, so the Live Sync indicator appearing no longer pushes buttons to a second row. The sync indicator is compacted to an icon-only badge on mobile.
+- **Overflow panel animation** — The secondary actions panel slides in with a subtle scale + fade animation when opened.
+- **Stacking fix** — The header is raised above the editor container on mobile so the overflow panel always renders on top of the writing area.
+
 ## [1.0.0] - 2026-03-20
 
 ### Initial Release
