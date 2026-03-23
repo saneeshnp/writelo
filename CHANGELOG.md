@@ -2,6 +2,23 @@
 
 All notable changes to Writelo will be documented in this file.
 
+## [1.2.0] - 2026-03-23
+
+### New Features
+
+- **Focus Mode** — A new toolbar button (⤢) hides the header, sidebar, and bottom links, leaving the editor as a full-viewport writing surface. Exit by pressing `Escape` or clicking the "Exit focus" button that appears in the top-right corner.
+- **Export as .txt** — Right-click any tab to download its content as a plain `.txt` file named after the tab. Works on background tabs too (no need to switch first). Available in the tab context menu alongside Duplicate and Close.
+
+### Visual Improvements
+
+- **Dark theme redesigned** — The default dark theme now uses charcoal gray tones (inspired by Notion's dark palette) instead of the previous blue-navy gradient. Backgrounds, surfaces, modals, and toasts all updated for a warmer, less blue-tinted feel.
+- **Default accent color changed to Blue** — The out-of-the-box accent is now Blue (`#3b82f6`) instead of Teal. Existing users with a saved preference are unaffected.
+- **Editor focus border removed** — The purple glow that appeared around the editor on focus has been removed for a cleaner look.
+
+### Bug Fixes
+
+- **Light theme toggle switches** — Toggle switch tracks in the Settings modal were nearly invisible on the light theme. They now have a visible inset border when off, which clears cleanly when toggled on.
+
 ## [1.1.0] - 2026-03-21
 
 ### Improvements

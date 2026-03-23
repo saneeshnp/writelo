@@ -1021,4 +1021,58 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem(WELCOME_KEY, '1');
     setTimeout(() => welcomeModal.classList.add('show'), 400);
   }
+
+  // Export as .txt (context menu)
+  const menuExportTxt = document.getElementById('menu-export-txt');
+  if (menuExportTxt) {
+    menuExportTxt.addEventListener('click', () => {
+      const targetTab = tabs.find(t => t.id === contextMenuTargetId);
+      tabContextMenu.style.display = 'none';
+      contextMenuTargetId = null;
+      if (!targetTab) return;
+
+      // Flush textarea content if this is the active tab
+      if (targetTab.id === activeTabId) targetTab.content = textarea.value;
+
+      if (!targetTab.content.trim()) {
+        showToast('Nothing to export — tab is empty', false);
+        return;
+      }
+
+      const safeName = targetTab.name.replace(/[/\\?%*:|"<>]/g, '-').trim() || 'note';
+      const blob = new Blob([targetTab.content], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${safeName}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast(`Exported "${targetTab.name}" as .txt`, true);
+    });
+  }
+
+  // Focus Mode
+  const focusBtn = document.getElementById('focus-btn');
+  const focusExitBtn = document.getElementById('focus-exit-btn');
+
+  function enterFocusMode() {
+    document.body.classList.add('focus-mode');
+    textarea.focus();
+  }
+
+  function exitFocusMode() {
+    document.body.classList.remove('focus-mode');
+    textarea.focus();
+  }
+
+  if (focusBtn) focusBtn.addEventListener('click', enterFocusMode);
+  if (focusExitBtn) focusExitBtn.addEventListener('click', exitFocusMode);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('focus-mode')) {
+      exitFocusMode();
+    }
+  });
 });

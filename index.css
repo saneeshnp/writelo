@@ -1765,3 +1765,63 @@ kbd {
 [data-accent="grey"] .tab-item.active .close-tab-btn {
     color: #e2e8f0;
 }
+
+/* Focus Mode */
+body.focus-mode {
+    padding: 0;
+}
+
+body.focus-mode .app-container {
+    height: 100dvh;
+    max-width: 100%;
+    gap: 0;
+}
+
+body.focus-mode header,
+body.focus-mode .app-bottom-links {
+    display: none;
+}
+
+body.focus-mode .tabs-bar {
+    display: none;
+}
+
+body.focus-mode .editor-container {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    box-shadow: none;
+}
+
+.focus-exit-btn {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem 0.35rem 0.6rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: color 0.2s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+body.focus-mode .focus-exit-btn {
+    display: flex;
+}
+
+.focus-exit-btn:hover {
+    color: var(--text-main);
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

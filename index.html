@@ -86,6 +86,12 @@
               <line x1="14" y1="11" x2="14" y2="17"></line>
             </svg>
           </button>
+          <button id="focus-btn" title="Focus Mode">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+            </svg>
+          </button>
         </div>
 
         <!-- Always visible -->
@@ -201,6 +207,14 @@
     <span class="bottom-link-sep">·</span>
     <button id="about-btn" class="bottom-link">About</button>
   </div>
+
+  <button id="focus-exit-btn" class="focus-exit-btn" title="Exit Focus Mode">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path>
+    </svg>
+    Exit focus
+  </button>
 
   <div id="settings-modal" class="modal-overlay">
     <div class="modal">
@@ -332,6 +346,16 @@
       </svg>
       Duplicate
     </div>
+    <div class="menu-item" id="menu-export-txt">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="16" y1="13" x2="8" y2="13"></line>
+        <line x1="16" y1="17" x2="8" y2="17"></line>
+      </svg>
+      Export as .txt
+    </div>
     <div class="menu-item menu-item-danger" id="menu-close">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round">
@@ -371,7 +395,7 @@
             <li><strong>Switch</strong> — click any tab name.</li>
             <li><strong>Rename</strong> — double-click a tab name, type, then press Enter.</li>
             <li><strong>Close</strong> — click the × on a tab (requires confirmation). You need at least two tabs for × to appear.</li>
-            <li><strong>Duplicate / Close</strong> — right-click a tab to open the context menu.</li>
+            <li><strong>Duplicate / Export as .txt / Close</strong> — right-click a tab to open the context menu.</li>
           </ul>
         </div>
 
@@ -398,6 +422,14 @@
           <ul>
             <li>Click the eye button in the toolbar to render the current tab as formatted Markdown.</li>
             <li>Requires an internet connection on first load so the Markdown library can be cached.</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3>Focus Mode</h3>
+          <ul>
+            <li>Click the ⤢ icon in the toolbar to enter Focus Mode — hides the header, sidebar, and footer for distraction-free writing.</li>
+            <li>Press <kbd>Escape</kbd> or click <strong>Exit focus</strong> (top-right corner) to return to normal view.</li>
           </ul>
         </div>
 
@@ -435,6 +467,7 @@
             <div class="help-shortcut-row"><kbd>Ctrl+F</kbd><span>Open Find &amp; Replace (when enabled)</span></div>
             <div class="help-shortcut-row"><kbd>Enter</kbd><span>Next match (in Find input)</span></div>
             <div class="help-shortcut-row"><kbd>Shift+Enter</kbd><span>Previous match (in Find input)</span></div>
+            <div class="help-shortcut-row"><kbd>Escape</kbd><span>Exit Focus Mode</span></div>
           </div>
         </div>
       </div>
@@ -549,7 +582,7 @@
           <div>
             <p class="about-name">Writelo</p>
             <p class="about-tagline">Simple Text Editor</p>
-            <p class="about-version">v1.1.0</p>
+            <p class="about-version">v1.2.0</p>
           </div>
         </div>
 

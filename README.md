@@ -37,6 +37,7 @@ Download the files and open `index.html` in any modern browser. That's it.
 ### Viewing & Copying
 - **Markdown Preview** — render your text as formatted Markdown in a modal overlay
 - **Copy All** — copy everything in the current tab to your clipboard in one click
+- **Focus Mode** — click the ⤢ icon in the toolbar to hide all chrome (header, sidebar, footer links) and write distraction-free. Press `Escape` or click "Exit focus" to return.
 
 ### Customization
 Open Settings (gear icon) to choose:
@@ -44,7 +45,7 @@ Open Settings (gear icon) to choose:
 | Option | Choices |
 |--------|---------|
 | Theme | Dark, Light, Ultra Dark |
-| Accent color | Purple, Blue, Green, Rose, Amber, **Teal** (default) |
+| Accent color | Purple, **Blue** (default), Green, Rose, Amber, Teal |
 
 The header logo, title gradient, and subtitle all update to match the chosen accent color.
 
@@ -54,6 +55,7 @@ Back up and restore your notes from the **Settings → Data** section.
 - **Export** — downloads a `writelo-backup-YYYY-MM-DD.json` file containing all your tabs
 - **Import** — opens a file picker; after confirmation, replaces all current tabs with the backup's content
 - **Include app settings** toggle — when checked, the export file also contains your theme, accent color, and feature flags, and import will restore them too
+- **Export as .txt** — right-click any tab and choose **Export as .txt** to download that tab's content as a plain text file
 
 Exported JSON format:
 ```json
@@ -81,6 +83,7 @@ If you open Writelo in more than one browser tab, they stay in sync automaticall
 | Ctrl+F / Cmd+F | Open Find & Replace (when enabled) |
 | Enter | Next match (in find panel) |
 | Shift+Enter | Previous match (in find panel) |
+| Escape | Exit Focus Mode |
 
 ---
 
@@ -92,7 +95,7 @@ If you open Writelo in more than one browser tab, they stay in sync automaticall
 | Switch tab | Click the tab |
 | Rename tab | Double-click the tab name |
 | Close tab | Click × on the tab (requires more than one tab) |
-| Duplicate / Close | Right-click the tab for a context menu |
+| Duplicate / Close / Export .txt | Right-click the tab for a context menu |
 
 ---
 
