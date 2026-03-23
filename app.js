@@ -527,7 +527,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentSettings = {
     theme: 'dark',
-    accentColor: '#14b8a6',
+    accentColor: '#3b82f6',
     findAndReplace: false
   };
 
