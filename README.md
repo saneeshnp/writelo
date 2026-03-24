@@ -1,10 +1,8 @@
-# Writelo - A Simple Browser-Based Text Editor
+# Writelo - A Super Light Browser-Based Text Editor
 
-A fast, beautiful, fully offline text editor that runs entirely in your browser. No account, no server, no installation — just open the file and start writing. Auto-syncs across all browser tabs.
+A fast, beautiful, fully offline text editor that runs entirely in your browser. No account, no server, no installation — just open the file and start writing. Auto-saves the contents locally and auto-syncs across all browser tabs.
 
-**Live Demo:** https://saneeshnp.github.io/writelo/
-
-**GitHub:** https://github.com/saneeshnp/writelo
+**[Live Demo](https://saneeshnp.github.io/writelo/)** — **[GitHub](https://github.com/saneeshnp/writelo)**
 
 ---
 
