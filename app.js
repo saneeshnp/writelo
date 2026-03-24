@@ -1057,14 +1057,48 @@ document.addEventListener('DOMContentLoaded', () => {
   const focusBtn = document.getElementById('focus-btn');
   const focusExitBtn = document.getElementById('focus-exit-btn');
 
+  function doFocusTransition(onSwap, onDone) {
+    const veil = document.getElementById('focus-veil');
+    const appContainer = document.querySelector('.app-container');
+
+    // Phase 1: veil snaps in + content compresses
+    veil.style.transition = 'opacity 0.15s ease';
+    veil.classList.add('focus-veil--active');
+    appContainer.style.transition = 'transform 0.15s ease, filter 0.15s ease';
+    appContainer.style.transform = 'scale(0.96)';
+    appContainer.style.filter = 'blur(4px)';
+
+    setTimeout(() => {
+      // Phase 2: swap layout while fully covered
+      onSwap();
+
+      // Phase 3: veil fades out + content springs back
+      veil.style.transition = 'opacity 0.22s ease';
+      veil.classList.remove('focus-veil--active');
+      appContainer.style.transition = 'transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), filter 0.25s ease';
+      appContainer.style.transform = '';
+      appContainer.style.filter = '';
+
+      setTimeout(() => {
+        veil.style.transition = '';
+        appContainer.style.transition = '';
+        if (onDone) onDone();
+      }, 320);
+    }, 160);
+  }
+
   function enterFocusMode() {
-    document.body.classList.add('focus-mode');
-    textarea.focus();
+    doFocusTransition(
+      () => document.body.classList.add('focus-mode'),
+      () => textarea.focus()
+    );
   }
 
   function exitFocusMode() {
-    document.body.classList.remove('focus-mode');
-    textarea.focus();
+    doFocusTransition(
+      () => document.body.classList.remove('focus-mode'),
+      () => textarea.focus()
+    );
   }
 
   if (focusBtn) focusBtn.addEventListener('click', enterFocusMode);

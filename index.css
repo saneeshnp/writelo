@@ -1825,3 +1825,45 @@ body.focus-mode .focus-exit-btn {
     transform: none;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+
+/* Focus mode veil — smooth transition overlay */
+.focus-veil {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    background: var(--bg-gradient);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    will-change: opacity;
+}
+
+/* Dark tint layer — subtle darkening flash during the swap */
+.focus-veil::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.focus-veil--active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Exit button entrance animation */
+@keyframes focusExitBtnIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body.focus-mode .focus-exit-btn {
+    display: flex;
+    animation: focusExitBtnIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
