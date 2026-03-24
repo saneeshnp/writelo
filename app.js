@@ -528,7 +528,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentSettings = {
     theme: 'dark',
     accentColor: '#3b82f6',
-    findAndReplace: false
+    findAndReplace: false,
+    markdownPreview: false
   };
 
   function loadSettings() {
@@ -595,6 +596,18 @@ document.addEventListener('DOMContentLoaded', () => {
       searchMatches = [];
       currentMatchIndex = -1;
       clearBackdrop();
+    }
+
+    // Markdown Preview feature flag
+    const markdownPreviewCb = document.getElementById('markdown-preview-toggle');
+    if (markdownPreviewCb) {
+      markdownPreviewCb.checked = !!currentSettings.markdownPreview;
+    }
+    if (previewBtn) {
+      previewBtn.style.display = currentSettings.markdownPreview ? '' : 'none';
+    }
+    if (!currentSettings.markdownPreview && previewModal && previewModal.classList.contains('show')) {
+      previewModal.classList.remove('show');
     }
   }
 
@@ -679,6 +692,15 @@ document.addEventListener('DOMContentLoaded', () => {
   if (findReplaceCb) {
     findReplaceCb.addEventListener('change', () => {
       currentSettings.findAndReplace = findReplaceCb.checked;
+      saveSettings();
+      applySettings();
+    });
+  }
+
+  const markdownPreviewCb = document.getElementById('markdown-preview-toggle');
+  if (markdownPreviewCb) {
+    markdownPreviewCb.addEventListener('change', () => {
+      currentSettings.markdownPreview = markdownPreviewCb.checked;
       saveSettings();
       applySettings();
     });

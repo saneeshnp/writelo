@@ -1071,6 +1071,10 @@ textarea::placeholder {
     user-select: none;
 }
 
+.feature-toggle + .feature-toggle {
+    margin-top: 0.75rem;
+}
+
 .feature-toggle input {
     display: none;
 }
