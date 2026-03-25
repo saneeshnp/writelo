@@ -175,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const nameEl = document.createElement('span');
       nameEl.className = 'tab-name';
+      nameEl.dataset.tabId = tab.id;
       nameEl.textContent = tab.name;
       nameEl.ondblclick = () => {
         nameEl.contentEditable = true;
@@ -301,7 +302,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initializeTabs();
 
-  // 2. Event Listeners for Input 
+  // 2. Event Listeners for Input
+  document.addEventListener('selectionchange', () => {
+    if (document.activeElement === textarea) updateCounts();
+  });
+
+  textarea.addEventListener('blur', updateCounts);
+
   textarea.addEventListener('input', () => {
     updateCounts();
     setStatus(false);
@@ -475,11 +482,20 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateCounts() {
     const text = textarea.value;
     const chars = text.length;
-    // Split by whitespace to accurately count words
     const words = text.trim() ? text.trim().split(/\s+/).length : 0;
 
-    charCountTitle.textContent = `${chars} Characters`;
-    wordCountTitle.textContent = `${words} Words`;
+    const selStart = textarea.selectionStart;
+    const selEnd = textarea.selectionEnd;
+    if (document.activeElement === textarea && selStart !== selEnd) {
+      const selText = text.slice(selStart, selEnd);
+      const selChars = selText.length;
+      const selWords = selText.trim() ? selText.trim().split(/\s+/).length : 0;
+      charCountTitle.textContent = `${selChars} of ${chars} Characters`;
+      wordCountTitle.textContent = `${selWords} of ${words} Words`;
+    } else {
+      charCountTitle.textContent = `${chars} Characters`;
+      wordCountTitle.textContent = `${words} Words`;
+    }
   }
 
   function setStatus(isSaved) {
@@ -1042,6 +1058,27 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!localStorage.getItem(WELCOME_KEY)) {
     localStorage.setItem(WELCOME_KEY, '1');
     setTimeout(() => welcomeModal.classList.add('show'), 400);
+  }
+
+  // Rename (context menu)
+  const menuRename = document.getElementById('menu-rename');
+  if (menuRename) {
+    menuRename.addEventListener('click', () => {
+      const targetId = contextMenuTargetId;
+      tabContextMenu.style.display = 'none';
+      contextMenuTargetId = null;
+      if (!targetId) return;
+      const nameEl = document.querySelector(`.tab-name[data-tab-id="${targetId}"]`);
+      if (nameEl) {
+        nameEl.contentEditable = true;
+        nameEl.focus();
+        const range = document.createRange();
+        range.selectNodeContents(nameEl);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+    });
   }
 
   // Copy contents (context menu)
