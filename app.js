@@ -1044,6 +1044,38 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => welcomeModal.classList.add('show'), 400);
   }
 
+  // Copy contents (context menu)
+  const menuCopyContents = document.getElementById('menu-copy-contents');
+  if (menuCopyContents) {
+    menuCopyContents.addEventListener('click', async () => {
+      const targetTab = tabs.find(t => t.id === contextMenuTargetId);
+      tabContextMenu.style.display = 'none';
+      contextMenuTargetId = null;
+      if (!targetTab) return;
+
+      // Flush textarea content if this is the active tab
+      if (targetTab.id === activeTabId) targetTab.content = textarea.value;
+
+      if (!targetTab.content.trim()) {
+        showToast('Nothing to copy — tab is empty', false);
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(targetTab.content);
+        showToast('Copied to clipboard!', true);
+      } catch (err) {
+        const tmp = document.createElement('textarea');
+        tmp.value = targetTab.content;
+        document.body.appendChild(tmp);
+        tmp.select();
+        document.execCommand('copy');
+        document.body.removeChild(tmp);
+        showToast('Copied to clipboard!', true);
+      }
+    });
+  }
+
   // Export as .txt (context menu)
   const menuExportTxt = document.getElementById('menu-export-txt');
   if (menuExportTxt) {
